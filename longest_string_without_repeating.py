@@ -24,6 +24,28 @@ class Solution(object):
         return longest_len
 
 
+    def betterLengthOfLongestSubstring(self, s):
+        longest_len = 0
+        a = 0
+        while a < len(s)-1:
+            list = []
+            list.append(s[a])
+
+            for b in range(a+1,len(s)):
+                if not s[b] in list:
+                    list.append(s[b])
+                    print(list)
+                else:
+                    a = b
+                    break
+
+
+            if len(list) > longest_len:
+                longest_len = len(list)
+
+            return longest_len
+
+
 str = "abcabcbb"
 str2 = "aaaaaaa"
 str3 = "pwwkew"
@@ -32,3 +54,6 @@ str5 = "addccccddddddd"
 solution = Solution()
 length = solution.lengthOfLongestSubstring(str5)
 print("longest length is %s" % length)
+
+second = solution.betterLengthOfLongestSubstring(str4)
+print(second)
