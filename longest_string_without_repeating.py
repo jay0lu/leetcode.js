@@ -1,5 +1,7 @@
 # https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
+import time
+
 class Solution(object):
     def lengthOfLongestSubstring(self,s):
         """
@@ -47,6 +49,30 @@ class Solution(object):
 
         return longest_len
 
+# could use hashset to optmize the algorithm
+
+    def hashSetLongestSubstring(self, s):
+        str_length = len(s)
+        if str_length == 0:
+            return 0
+        else:
+            a = 0
+            b = 1
+            max_len = 1
+            while a < str_length and b < str_length:
+                substr = set(s[a:b])
+                if s[b] in substr:
+                    a = a + 1
+                    print(substr)
+                else:
+                    b = b + 1
+                    substr = set(s[a:b])
+                    if len(substr) > max_len:
+                        max_len = len(substr)
+                    print(substr)
+            return max_len
+
+
 
 str = "abcabcbb"
 str2 = "aaaaaaa"
@@ -60,5 +86,12 @@ solution = Solution()
 # length = solution.lengthOfLongestSubstring(str5)
 # print("longest length is %s" % length)
 
-second = solution.betterLengthOfLongestSubstring(str8)
-print(second)
+# start_time = time.time()
+# second = solution.betterLengthOfLongestSubstring(str8)
+# print(second)
+# print("--- %s seconds ---" % (time.time() - start_time))
+
+start_time = time.time()
+result = solution.hashSetLongestSubstring(str8)
+print(result)
+print("--- %s seconds ---" % (time.time() - start_time))
