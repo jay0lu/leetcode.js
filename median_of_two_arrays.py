@@ -1,30 +1,57 @@
 # https://leetcode.com/problems/median-of-two-sorted-arrays/
 
 # using merge sort
-def mergeSort(list):
-    result = []
-    if len(list) < 2:
-        return list
-    mid = int(len(list)/2)
-    a = mergeSort(list[:mid])
-    b = mergeSort(list[mid:])
-    while (len(a) > 0) or (len(b) > 0):
-        if len(a) > 0 and len(b)>0:
-            if a[0] > b[0]:
-                result.append(b[0])
-                b.pop(0)
+def mergeSort(alist):
+    print("Splitting ",alist)
+    if len(alist)>1:
+        mid = len(alist)//2
+        lefthalf = alist[:mid]
+        righthalf = alist[mid:]
+
+        mergeSort(lefthalf)
+        mergeSort(righthalf)
+
+        i=0
+        j=0
+        k=0
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                alist[k]=lefthalf[i]
+                i=i+1
             else:
-                result.append(a[0])
-                a.pop(0)
-        elif len(b) > 0:
-            for i in b:
-                result.append(i)
-                b.pop(0)
-        else:
-            for i in a:
-                result.append(i)
-                a.pop(0)
-    return result
+                alist[k]=righthalf[j]
+                j=j+1
+            k=k+1
+
+        while i < len(lefthalf):
+            alist[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+
+        while j < len(righthalf):
+            alist[k]=righthalf[j]
+            j=j+1
+            k=k+1
+            
+    print("Merging ",alist)
+
+    # while (len(leftHalf) > 0) or (len(rightHalf) > 0):
+    #     if len(leftHalf) > 0 and len(rightHalf)>0:
+    #         if leftHalf[0] > rightHalf[0]:
+    #             result.append(rightHalf[0])
+    #             rightHalf.pop(0)
+    #         else:
+    #             result.append(leftHalf[0])
+    #             leftHalf.pop(0)
+    #     elif len(rightHalf) > 0:
+    #         for i in rightHalf:
+    #             result.append(i)
+    #             rightHalf.pop(0)
+    #     else:
+    #         for i in leftHalf:
+    #             result.append(i)
+    #             leftHalf.pop(0)
+    # return result
 
 
 class Solution(object):
