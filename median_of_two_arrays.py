@@ -41,7 +41,6 @@ class Solution(object):
             return list[0]
         else:
             mergeList = mergeSort(list)
-            print(mergeList)
             mid = len(mergeList)//2
             if len(mergeList) % 2 == 1:
                 medianNum = mergeList[mid]
@@ -51,8 +50,8 @@ class Solution(object):
 
 
 list = [1,2,3,5,6,7,8,9,0,12,13,15,36,38,49,59]
-nums1 = [1,2,3]
-nums2 = [9,8,6]
+nums1 = [1,2]
+nums2 = [3,4]
 solution = Solution()
 result = solution.findMedianSortedArrays(nums1, nums2)
 print(result)
