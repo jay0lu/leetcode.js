@@ -12,21 +12,22 @@ def check_palindrome(str):
         return True
 
 
-# class Solution(object):
-#     def longestPalindrome(self, s):
-#
-#         # dynamic programming
-#         if len(s) < 2:
-#             return s
-#         else:
-#             slide_window = 1
-#             i = 0
-#             j = 0
-#             while i+slide_window < len(s):
-#                 j = i + slide_window
-#                 for x in range (0,len(s)):
-#                     # check_palindrome(s[i:j])
-#                     pass
+class Solution(object):
+    def longestPalindrome(self, s):
+
+        # dynamic programming
+        if len(s) < 2:
+            return s
+        else:
+            slide_window = 1
+            i = 0
+            j = 0
+            while i+slide_window < len(s):
+                j = i + slide_window
+                for x in range (0,len(s)):
+                    s = s[x:]
+                    result = check_palindrome(s[i:j])
+
 
 s = "abc"
 print(check_palindrome(s))
