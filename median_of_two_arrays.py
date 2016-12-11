@@ -1,8 +1,6 @@
 # https://leetcode.com/problems/median-of-two-sorted-arrays/
 
-# using merge sort
 def mergeSort(alist):
-    print("Splitting ",alist)
     if len(alist)>1:
         mid = len(alist)//2
         lefthalf = alist[:mid]
@@ -32,31 +30,30 @@ def mergeSort(alist):
             alist[k]=righthalf[j]
             j=j+1
             k=k+1
-            
-    print("Merging ",alist)
 
-    # while (len(leftHalf) > 0) or (len(rightHalf) > 0):
-    #     if len(leftHalf) > 0 and len(rightHalf)>0:
-    #         if leftHalf[0] > rightHalf[0]:
-    #             result.append(rightHalf[0])
-    #             rightHalf.pop(0)
-    #         else:
-    #             result.append(leftHalf[0])
-    #             leftHalf.pop(0)
-    #     elif len(rightHalf) > 0:
-    #         for i in rightHalf:
-    #             result.append(i)
-    #             rightHalf.pop(0)
-    #     else:
-    #         for i in leftHalf:
-    #             result.append(i)
-    #             leftHalf.pop(0)
-    # return result
-
+        return alist
 
 class Solution(object):
-    pass
+    # using merge sort
+    def findMedianSortedArrays(self, nums1, nums2):
+        list = nums1 + nums2
+        if len(list) < 2:
+            return list[0]
+        else:
+            mergeList = mergeSort(list)
+            print(mergeList)
+            mid = len(mergeList)//2
+            if len(mergeList) % 2 == 1:
+                medianNum = mergeList[mid]
+            else:
+                medianNum = (mergeList[mid] + mergeList[mid-1]) / 2
+            return medianNum
+
 
 list = [1,2,3,5,6,7,8,9,0,12,13,15,36,38,49,59]
+nums1 = [1,2,3]
+nums2 = [9,8,6]
 solution = Solution()
-print(mergeSort(list))
+result = solution.findMedianSortedArrays(nums1, nums2)
+print(result)
+# print(mergeSort(list))
