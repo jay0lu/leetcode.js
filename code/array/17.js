@@ -42,20 +42,20 @@
 // };
 
 export default (digits) => {
-  if (!digits.length) return [];
-  let arr = [[], [], ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i'], ['j', 'k', 'l'], ['m', 'n', 'o'], ['p', 'q', 'r', 's'], ['t', 'u', 'v'], ['w', 'x', 'y', 'z']];
+  if (!digits.length) return []
+  let arr = [[], [], ['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i'], ['j', 'k', 'l'], ['m', 'n', 'o'], ['p', 'q', 'r', 's'], ['t', 'u', 'v'], ['w', 'x', 'y', 'z']]
 
   let multiply = (arr1, arr2) => {
-    let innerRes = [];
+    let innerRes = []
     for (let i = 0, len1 = arr1.length; i < len1; ++i) {
       for (let j = 0, len2 = arr2.length; j < len2; ++j) {
-        innerRes.push(arr1[i] + arr2[j]);
+        innerRes.push(arr1[i] + arr2[j])
       }
     }
-    return innerRes;
-  };
+    return innerRes
+  }
 
   return digits.split('').reduce((prev, cur) => {
-    return multiply(prev, arr[Number(cur)]);
-  }, ['']);
-};
+    return multiply(prev, arr[Number(cur)])
+  }, [''])
+}

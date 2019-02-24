@@ -1,8 +1,7 @@
 module.exports = {
     "extends": ["standard","plugin:jest/recommended"],
     "rules": {
-        "semi": [1, "always"],
-        "quotes": [0, "single"],
+        "quotes": [1, "single"],
         "eol-last": 0
     }
 };
